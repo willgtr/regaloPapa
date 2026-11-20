@@ -1,0 +1,6 @@
+.private/
+.impeccable/
+PRODUCT.md
+preview.py
+probar-web.bat
+assets/images/*.prompt.txt

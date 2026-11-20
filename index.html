@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12362d">
+  <meta name="description" content="Una sorpresa de Navidad para Guillermo e Inma.">
+  <title>Una Navidad para elegir juntos · Guillermo e Inma</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body class="scene-intro">
+  <div class="snow" aria-hidden="true"></div>
+  <header class="masthead">
+    <a class="mark" href="#inicio" aria-label="Volver al comienzo">✳ <span>Navidad 2026</span></a>
+    <span class="masthead-note">Para Guillermo e Inma</span>
+  </header>
+
+  <main id="app">
+    <section id="inicio" class="screen intro" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="handwritten">Una carta de Papá Noel</p>
+        <h1 id="intro-title">Esta Navidad,<br><em>la aventura</em><br>la elegís vosotros.</h1>
+        <p class="intro-lead">Guillermo e Inma, hemos preparado cuatro planes para compartir. Sus nombres están escondidos en mis sobres. Abridlos, descubridlos juntos y decidid cuál os hace más ilusión.</p>
+        <div class="intro-actions"><button class="button button-light" id="start-button" type="button">Abrir la lista de regalos</button><button class="text-button text-button-light hidden" id="restart-button" type="button">Empezar de nuevo</button></div>
+      </div>
+      <div class="intro-visual"><img src="assets/images/papa-noel-trineo.png" alt="Papá Noel en su trineo, con un saco de regalos y dos renos" width="1752" height="897"></div>
+      <div class="intro-foot">Cuatro sobres. Una elección para los dos.</div>
+    </section>
+
+    <section id="juego" class="screen game hidden" aria-labelledby="game-title">
+      <div class="section-top">
+        <p class="handwritten">Papá Noel os guía</p>
+        <h2 id="game-title">La lista secreta</h2>
+        <p>En cada sobre empezáis con 200 € cada uno. Acertar una letra mantiene el turno; fallar cuesta 50 € y lo pasa. Cada jugador puede comprar pistas privadas después de elegir su primera letra. La última letra o el nombre completo dan un punto. Si ambos llegáis a 0 €, el regalo se revela sin ganador.</p>
+        <div class="progress" aria-live="polite"><span id="progress-text">0 de 4 planes descubiertos</span><div class="progress-track"><span id="progress-fill"></span></div></div>
+        <div id="scoreboard" class="scoreboard" aria-live="polite"></div>
+      </div>
+      <div id="envelope-grid" class="envelope-grid"></div>
+      <div id="round-panel" class="round-panel hidden"></div>
+      <div class="game-footer"><button class="text-button hidden" id="to-final" type="button">Ya conocemos los cuatro. Elegir regalo</button><button class="text-button hidden" id="restart-game-button" type="button">Reiniciar los cuatro sobres</button></div>
+    </section>
+
+    <section id="revelacion" class="screen reveal hidden" aria-labelledby="reveal-title">
+      <div class="reveal-top"><button class="back-button" id="back-to-game" type="button">Volver a los sobres</button><span id="reveal-count"></span></div>
+      <div class="reveal-layout">
+        <div class="poster-frame"><img id="reveal-image" src="" alt=""></div>
+        <div class="reveal-copy"><p class="handwritten">¡Sorpresa! Este sobre guarda…</p><h2 id="reveal-title"></h2><p id="reveal-result" class="reveal-result"></p><p id="reveal-place" class="reveal-place"></p><p id="reveal-description" class="reveal-description"></p><div class="music-control"><button id="music-toggle" type="button" aria-label="Reproducir música">▶</button><div><strong>Un anticipo para escuchar</strong><span id="music-status">Pulsa para escuchar</span></div></div><button class="button button-dark" id="next-button" type="button">Seguir descubriendo</button></div>
+      </div>
+    </section>
+
+    <section id="eleccion" class="screen final hidden" aria-labelledby="final-title">
+      <div class="final-heading"><p class="handwritten">La última página de la carta</p><h2 id="final-title">Ahora elegís vosotros.</h2><p>Ya conocéis los cuatro planes. Habladlo con calma y marcad el que queráis vivir juntos.</p><div id="final-scoreboard" class="scoreboard scoreboard-final"></div></div>
+      <form id="choice-form"><fieldset><legend class="sr-only">Elegid una opción de regalo</legend><div id="choice-list" class="choice-list"></div></fieldset><div class="final-actions"><button class="button button-light" id="whatsapp-button" type="submit" disabled>Enviar elección por WhatsApp</button><button class="text-button text-button-light" id="copy-button" type="button" disabled>Copiar mensaje</button><p id="share-status" role="status" aria-live="polite">Se abrirá WhatsApp con el mensaje listo para enviarme.</p></div></form>
+      <p class="final-signature">El mejor regalo será vivirlo juntos.<br><span>— Papá Noel</span></p>
+    </section>
+  </main>
+  <button id="background-music-button" class="background-music-button" type="button">Activar música navideña</button>
+  <audio id="background-audio" src="assets/audio/jingle-bells.flac" preload="auto" loop></audio>
+  <audio id="gift-audio" preload="none"></audio>
+  <dialog id="hint-dialog" class="hint-dialog" aria-labelledby="hint-dialog-title">
+    <p class="handwritten">Solo para quien la compró</p>
+    <h2 id="hint-dialog-title">Tu pista privada</h2>
+    <p id="hint-owner"></p>
+    <p class="hint-privacy">Pasa el móvil a quien juega. La pista permanecerá oculta hasta que pulse el botón.</p>
+    <div id="hint-text" class="hint-private-text hidden" role="status"></div>
+    <button id="hint-show" class="button button-dark" type="button">Revelar mi pista</button>
+    <button id="hint-close" class="text-button" type="button">Ocultar y volver al juego</button>
+  </dialog>
+  <footer class="site-footer">Hecho para una Navidad muy vuestra · 2026</footer>
+</body>
+</html>
